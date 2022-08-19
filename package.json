@@ -9,8 +9,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@deck.gl/core": "^8.8.8",
+    "@deck.gl/layers": "^8.8.8",
+    "@deck.gl/react": "^8.8.8",
+    "mapbox-gl": "^2.9.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-map-gl": "^7.0.19"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

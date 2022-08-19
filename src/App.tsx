@@ -1,34 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "./App.css";
+import DeckGL from "@deck.gl/react";
+import { ScatterplotLayer } from "@deck.gl/layers";
+import StaticMap from 'react-map-gl';
 
+const MAPBOX_ACCESS_TOKEN = '' // TODO
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
+  const data: never[] = [];
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <DeckGL
+      longitude={-122.45}
+      latitude={37.78}
+      zoom={12}
+      layers={[new ScatterplotLayer({ data })]}
+    >
+
+    <StaticMap
+      mapStyle="mapbox://styles/mapbox/dark-v9"
+      mapboxAccessToken={MAPBOX_ACCESS_TOKEN} />
+
+    </DeckGL>
+  );
 }
 
-export default App
+export default App;
