@@ -12,10 +12,9 @@ function App() {
   const data: never[] = [];
   return (
     <DeckGL
-      longitude={-122.45}
-      latitude={37.78}
-      zoom={12}
-      layers={[new ScatterplotLayer({ data })]}
+      initialViewState={{longitude: -122.45, latitude: 37.78, zoom: 12}}
+      controller={true}
+      layers={[new ScatterplotLayer({data})]}
     >
 
     <StaticMap
