@@ -8,12 +8,12 @@ import { AmbientLight, LightingEffect, PointLight } from "@deck.gl/core/typed";
 import { TripsLayer } from "@deck.gl/geo-layers/typed";
 import "mapbox-gl/src/css/mapbox-gl.css";
 
+import tripData from '../public/trips.json'
+
 // Source data CSV
 const DATA_URL = {
   BUILDINGS:
     "https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json", // eslint-disable-line
-  TRIPS:
-    "http://localhost:5173/trips.json", // eslint-disable-line
 };
 
 const ambientLight = new AmbientLight({
@@ -65,8 +65,6 @@ const landCover = [
 ];
 const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoiaWxpYS10dXJub3V0IiwiYSI6ImNsNzBja29qYjBkMW0zdnFwb2d0aWR4dmgifQ.SqJqgMKQH_BOQckDVI6JyQ";
 function App({
-  buildings = DATA_URL.BUILDINGS,
-  trips = DATA_URL.TRIPS,
   trailLength = 180,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
@@ -100,7 +98,7 @@ function App({
     }),
     new TripsLayer({
       id: "trips",
-      data: trips,
+      data: tripData,
       getPath: (d) => d.path,
       getTimestamps: (d) => d.timestamps,
       getColor: (d) => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
