@@ -2,18 +2,24 @@ import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import DeckGL from "@deck.gl/react/typed";
-import { PolygonLayer, ScatterplotLayer } from "@deck.gl/layers/typed";
+import {
+  GeoJsonLayer,
+  LineLayer,
+  PathLayer,
+  PolygonLayer,
+  ScatterplotLayer,
+} from "@deck.gl/layers/typed";
 import StaticMap, { Layer, Map } from "react-map-gl";
 import { AmbientLight, LightingEffect, PointLight } from "@deck.gl/core/typed";
 import { TripsLayer } from "@deck.gl/geo-layers/typed";
 import "mapbox-gl/src/css/mapbox-gl.css";
+import busRoutes from "../geojson/BusRoutes.json";
 
 // Source data CSV
 const DATA_URL = {
   BUILDINGS:
     "https://raw.githubusercontent.com/visgl/deck.gl-data/master/examples/trips/buildings.json", // eslint-disable-line
-  TRIPS:
-    "http://localhost:5173/trips.json", // eslint-disable-line
+  TRIPS: "http://localhost:5173/trips.json", // eslint-disable-line
 };
 
 const ambientLight = new AmbientLight({
@@ -45,8 +51,8 @@ const DEFAULT_THEME = {
 };
 
 const INITIAL_VIEW_STATE = {
-  longitude: 174.765098,
-  latitude: -36.848667,
+  longitude: 174.907429167043006,
+  latitude: -37.201706387778003,
   zoom: 13,
   pitch: 45,
   bearing: 0,
@@ -63,7 +69,8 @@ const landCover = [
     [-36.84, 174.86],
   ],
 ];
-const MAPBOX_ACCESS_TOKEN = "pk.eyJ1IjoiaWxpYS10dXJub3V0IiwiYSI6ImNsNzBja29qYjBkMW0zdnFwb2d0aWR4dmgifQ.SqJqgMKQH_BOQckDVI6JyQ";
+const MAPBOX_ACCESS_TOKEN =
+  "pk.eyJ1IjoiaWxpYS10dXJub3V0IiwiYSI6ImNsNzBja29qYjBkMW0zdnFwb2d0aWR4dmgifQ.SqJqgMKQH_BOQckDVI6JyQ";
 function App({
   buildings = DATA_URL.BUILDINGS,
   trips = DATA_URL.TRIPS,
@@ -89,29 +96,50 @@ function App({
     };
   }, [animation]);
 
-  const layers = [
-    // This is only needed when using shadow effects
-    new PolygonLayer({
-      id: "ground",
-      data: landCover,
-      getPolygon: (f) => f,
-      stroked: false,
-      getFillColor: [0, 0, 0, 0],
-    }),
-    new TripsLayer({
-      id: "trips",
-      data: trips,
-      getPath: (d) => d.path,
-      getTimestamps: (d) => d.timestamps,
-      getColor: (d) => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
-      opacity: 0.3,
-      widthMinPixels: 2,
-      rounded: true,
-      trailLength,
-      currentTime: time,
+  const dataTransformation = (busRoutes as any).features.reduce(
+    (acc: any, route: any) => {
+      if (acc[route.properties.ROUTENUMBER])
+        return {
+          ...acc,
+          [route.properties.ROUTENUMBER]: {
+            ...acc[route.properties.ROUTENUMBER],
+            geometry: {
+              ...acc[route.properties.ROUTENUMBER].geometry,
+              coordinates: [
+                ...acc[route.properties.ROUTENUMBER].geometry.coordinates,
+                ...route.geometry.coordinates,
+              ],
+            },
+          },
+        };
+      return { ...acc, [route.properties.ROUTENUMBER]: route };
+    },
+    {},
+  );
 
-      shadowEnabled: false,
+  const layers = [
+    new GeoJsonLayer({
+      id: "busroutes",
+      data: busRoutes as any,
+      getPolygon: (d) => d.geometry.coordinates,
+      getLineWidth: 5,
+      getLineColor: [255, 140, 0],
+      getFillColor: (d) => [255, 140, 0],
     }),
+    // new TripsLayer({
+    //   id: "trips",
+    //   data: trips,
+    //   getPath: (d) => d.path,
+    //   getTimestamps: (d) => d.timestamps,
+    //   getColor: (d) => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
+    //   opacity: 0.3,
+    //   widthMinPixels: 2,
+    //   rounded: true,
+    //   trailLength,
+    //   currentTime: time,
+
+    //   shadowEnabled: false,
+    // }),
   ];
 
   const mapboxBuildingLayer = {
