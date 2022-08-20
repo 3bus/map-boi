@@ -14,6 +14,9 @@ import { AmbientLight, LightingEffect, PointLight } from "@deck.gl/core/typed";
 import { TripsLayer } from "@deck.gl/geo-layers/typed";
 import "mapbox-gl/src/css/mapbox-gl.css";
 import busRoutes from "../geojson/BusRoutes.json";
+import busStops from "../geojson/BusStops.json";
+import trainRoutes from "../geojson/TrainRoutes.json";
+import trainStops from "../geojson/TrainStops.json";
 
 import tripData from "../public/trips.json";
 
@@ -51,10 +54,10 @@ const DEFAULT_THEME = {
   material,
   effects: [lightingEffect],
 };
-
+//-36.849219, 174.764254
 const INITIAL_VIEW_STATE = {
-  longitude: 174.907429167043006,
-  latitude: -37.201706387778003,
+  longitude: 174.764254,
+  latitude: -36.849219,
   zoom: 13,
   pitch: 45,
   bearing: 0,
@@ -125,6 +128,30 @@ function App({
       getLineWidth: 5,
       getLineColor: [255, 140, 0],
       getFillColor: (d) => [255, 140, 0],
+    }),
+    new GeoJsonLayer({
+      id: "trainroutes",
+      data: trainRoutes as any,
+      getPolygon: (d) => d.geometry.coordinates,
+      getLineWidth: 10,
+      getLineColor: [34, 246, 225],
+      getFillColor: (d) => [34, 246, 225],
+    }),
+    new GeoJsonLayer({
+      id: "trainstops",
+      data: trainStops as any,
+      getPolygon: (d) => d.geometry.coordinates,
+      getLineWidth: 50,
+      getLineColor: [45, 214, 90],
+      getFillColor: (d) => [45, 214, 90],
+    }),
+    new GeoJsonLayer({
+      id: "busstops",
+      data: busStops as any,
+      getPolygon: (d) => d.geometry.coordinates,
+      getLineWidth: 30,
+      getLineColor: [199, 86, 120],
+      getFillColor: (d) => [199, 86, 120],
     }),
     // new TripsLayer({
     //   id: "trips",
