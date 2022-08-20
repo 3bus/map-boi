@@ -10,7 +10,7 @@ import {
   ScatterplotLayer,
 } from "@deck.gl/layers/typed";
 import StaticMap, { Layer, Map } from "react-map-gl";
-import { AmbientLight, LightingEffect, PointLight } from "@deck.gl/core/typed";
+import { Accessor, AmbientLight, Color, LightingEffect, PointLight } from "@deck.gl/core/typed";
 import { TripsLayer } from "@deck.gl/geo-layers/typed";
 import "mapbox-gl/src/css/mapbox-gl.css";
 import busRoutes from "../geojson/BusRoutes.json";
@@ -97,6 +97,8 @@ document.addEventListener("keydown", (e) => {
     isGoodMode = !isGoodMode;
   }
 });
+
+type ColorNumberThing = number[] & Accessor<any, Color | Color[]>
 
 const MAP_STYLE =
   "https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json";
@@ -187,7 +189,7 @@ function App({
           (a: any, idx: number, arr: []) =>
             (loopLength / arr.length) * ((idx + arr.length / 2) % arr.length),
         ),
-      getColor: isGoodMode ? goodTripColor : badTripColor,
+      getColor: isGoodMode ? (goodTripColor as ColorNumberThing) : (badTripColor as ColorNumberThing),
       getWidth: 10,
       fadeTrail: true,
       trailLength: isGoodMode ? goodTrailLength : badTrailLength,
