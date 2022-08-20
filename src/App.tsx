@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import "./App.css";
 import DeckGL from "@deck.gl/react/typed";
@@ -53,8 +53,8 @@ const DEFAULT_THEME = {
 };
 
 const INITIAL_VIEW_STATE = {
-  longitude: 174.907429167043006,
-  latitude: -37.201706387778003,
+  longitude: 174.764254,
+  latitude: -36.849219,
   zoom: 13,
   pitch: 45,
   bearing: 0,
@@ -78,8 +78,8 @@ function App({
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
-  loopLength = 1800, // unit corresponds to the timestamp in source data
-  animationSpeed = 1,
+  loopLength = 500, // unit corresponds to the timestamp in source data
+  animationSpeed = 0.5,
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState<{ id: number | undefined }>({ id: undefined });
@@ -96,50 +96,49 @@ function App({
     };
   }, [animation]);
 
-  const dataTransformation = (busRoutes as any).features.reduce(
-    (acc: any, route: any) => {
-      if (acc[route.properties.ROUTENUMBER])
-        return {
-          ...acc,
-          [route.properties.ROUTENUMBER]: {
-            ...acc[route.properties.ROUTENUMBER],
+  const busRouteMemo = useMemo(() => {
+    console.log("Do the hard math!");
+    return (busRoutes as any).features.reduce((acc: any, feature: any) => {
+      return [
+        ...acc,
+        ...feature.geometry.coordinates.map((coordinates: any) => {
+          return {
+            ...feature,
             geometry: {
-              ...acc[route.properties.ROUTENUMBER].geometry,
-              coordinates: [
-                ...acc[route.properties.ROUTENUMBER].geometry.coordinates,
-                ...route.geometry.coordinates,
-              ],
+              ...feature.geometry,
+              coordinates: [...coordinates, ...coordinates.slice().reverse()],
             },
-          },
-        };
-      return { ...acc, [route.properties.ROUTENUMBER]: route };
-    },
-    {},
-  );
+          };
+        }),
+      ];
+    }, []);
+  }, []);
 
   const layers = [
-    new GeoJsonLayer({
-      id: "busroutes",
-      data: busRoutes as any,
-      getPolygon: (d) => d.geometry.coordinates,
-      getLineWidth: 5,
-      getLineColor: [255, 140, 0],
-      getFillColor: (d) => [255, 140, 0],
-    }),
-    // new TripsLayer({
-    //   id: "trips",
-    //   data: trips,
-    //   getPath: (d) => d.path,
-    //   getTimestamps: (d) => d.timestamps,
-    //   getColor: (d) => (d.vendor === 0 ? theme.trailColor0 : theme.trailColor1),
-    //   opacity: 0.3,
-    //   widthMinPixels: 2,
-    //   rounded: true,
-    //   trailLength,
-    //   currentTime: time,
-
-    //   shadowEnabled: false,
+    // new GeoJsonLayer({
+    //   id: "busroutes",
+    //   data: busRoutes as any,
+    //   getPolygon: (d) => d.geometry.coordinates,
+    //   getLineWidth: 5,
+    //   getLineColor: [255, 140, 0],
+    //   getFillColor: (d) => [255, 140, 0],
     // }),
+    new TripsLayer({
+      id: "trips",
+      data: busRouteMemo,
+      getPath: (d) => d.geometry.coordinates,
+      getTimestamps: (d) =>
+        d.geometry.coordinates.map(
+          (a: any, idx: number, arr: []) =>
+            (loopLength / arr.length) * ((idx + arr.length / 2) % arr.length),
+        ),
+      getColor: [255, 64, 64],
+      opacity: 0.1,
+      getWidth: 10,
+      fadeTrail: true,
+      trailLength: 200,
+      currentTime: time,
+    }),
   ];
 
   const mapboxBuildingLayer = {
@@ -149,8 +148,8 @@ function App({
     type: "fill-extrusion",
     minzoom: 0,
     paint: {
-      "fill-extrusion-color": "rgb(74, 80, 87)",
-      "fill-extrusion-opacity": 0.6,
+      "fill-extrusion-color": "rgb(50, 50, 50)",
+      "fill-extrusion-opacity": 0.8,
       "fill-extrusion-height": ["get", "render_height"],
     },
   };
