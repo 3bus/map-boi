@@ -1,0 +1,958 @@
+{
+    "type": "FeatureCollection",
+    "name": "TrainService",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 1,
+                "STOPID": 97,
+                "STOPCODE": 97,
+                "STOPNAME": "Papakura Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -37.06429361,
+                "STOPLON": 174.94611444,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.946114444296001,
+                    -37.064293610246899
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 2,
+                "STOPID": 98,
+                "STOPCODE": 98,
+                "STOPNAME": "Manurewa Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -37.02326778,
+                "STOPLON": 174.89617083,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.896170833398003,
+                    -37.0232677768362
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 3,
+                "STOPID": 125,
+                "STOPCODE": 125,
+                "STOPNAME": "Henderson Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.88096528,
+                "STOPLON": 174.63091,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.630909999694012,
+                    -36.880965276720403
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 4,
+                "STOPID": 127,
+                "STOPCODE": 127,
+                "STOPNAME": "Swanson Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.86618056,
+                "STOPLON": 174.5763,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.576300000275012,
+                    -36.866180554276397
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 5,
+                "STOPID": 113,
+                "STOPCODE": 113,
+                "STOPNAME": "Greenlane Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.88965722,
+                "STOPLON": 174.79741944,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.797419444968995,
+                    -36.889657221204502
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 6,
+                "STOPID": 122,
+                "STOPCODE": 122,
+                "STOPNAME": "Kingsland Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.87250778,
+                "STOPLON": 174.74453,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.744530000332986,
+                    -36.872507776706698
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 7,
+                "STOPID": 103,
+                "STOPCODE": 103,
+                "STOPNAME": "Glen Innes Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.87880056,
+                "STOPLON": 174.85412,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.854120000318005,
+                    -36.878800554747798
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 8,
+                "STOPID": 99,
+                "STOPCODE": 99,
+                "STOPNAME": "Homai Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -37.01346333,
+                "STOPLON": 174.87467,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.874670000244009,
+                    -37.013463332218599
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 9,
+                "STOPID": 142,
+                "STOPCODE": 142,
+                "STOPNAME": "Hamilton Rotokauri",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -37.75079528,
+                "STOPLON": 175.22995833,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    175.229958333349998,
+                    -37.750795276567601
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 10,
+                "STOPID": 112,
+                "STOPCODE": 112,
+                "STOPNAME": "Ellerslie Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.89847417,
+                "STOPLON": 174.80811111,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.808111111562994,
+                    -36.898474165455603
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 11,
+                "STOPID": 277,
+                "STOPCODE": 277,
+                "STOPNAME": "Grafton Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.86561194,
+                "STOPLON": 174.76984,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.769839999992996,
+                    -36.865611943309297
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 12,
+                "STOPID": 141,
+                "STOPCODE": 141,
+                "STOPNAME": "Hamilton Frankton",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -37.79264194,
+                "STOPLON": 175.26499667,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    175.264996666685988,
+                    -37.792641943877904
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 13,
+                "STOPID": 244,
+                "STOPCODE": 244,
+                "STOPNAME": "Sylvia Park Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.91463667,
+                "STOPLON": 174.8426,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.842599999946003,
+                    -36.914636666098502
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 14,
+                "STOPID": 128,
+                "STOPCODE": 128,
+                "STOPNAME": "Ranui Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.86793667,
+                "STOPLON": 174.60333944000001,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.603339444455997,
+                    -36.867936666095197
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 15,
+                "STOPID": 108,
+                "STOPCODE": 108,
+                "STOPNAME": "Puhinui Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.98975556,
+                "STOPLON": 174.85608,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.856079999481011,
+                    -36.989755554873902
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 16,
+                "STOPID": 134,
+                "STOPCODE": 134,
+                "STOPNAME": "Pukekohe Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -37.20331083,
+                "STOPLON": 174.91015972,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.910159722260005,
+                    -37.203310832567702
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 17,
+                "STOPID": 105,
+                "STOPCODE": 105,
+                "STOPNAME": "Avondale Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.89714083,
+                "STOPLON": 174.69910472000001,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.699104722083007,
+                    -36.897140832805199
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 18,
+                "STOPID": 100,
+                "STOPCODE": 100,
+                "STOPNAME": "Papatoetoe Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.97766639,
+                "STOPLON": 174.84925,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.849250000336013,
+                    -36.977666387853098
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 19,
+                "STOPID": 116,
+                "STOPCODE": 116,
+                "STOPNAME": "Orakei Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.86242667,
+                "STOPLON": 174.8095,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.809499999465004,
+                    -36.862426666045998
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 20,
+                "STOPID": 133,
+                "STOPCODE": 133,
+                "STOPNAME": "Britomart Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.84429111,
+                "STOPLON": 174.76847972,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.768479722095009,
+                    -36.844291110634401
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 21,
+                "STOPID": 9218,
+                "STOPCODE": 9218,
+                "STOPNAME": "Manukau Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.99388,
+                "STOPLON": 174.87739667,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.877396667126987,
+                    -36.993879999395503
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 22,
+                "STOPID": 129,
+                "STOPCODE": 129,
+                "STOPNAME": "New Lynn Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.909385,
+                "STOPLON": 174.68405,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.684049999968011,
+                    -36.909384999216201
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 23,
+                "STOPID": 109,
+                "STOPCODE": 109,
+                "STOPNAME": "Middlemore Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.96304139,
+                "STOPLON": 174.83896861,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.838968611470989,
+                    -36.963041388416002
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 24,
+                "STOPID": 606,
+                "STOPCODE": 606,
+                "STOPNAME": "Te Papapa Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.92013083,
+                "STOPLON": 174.80137,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.801370000416,
+                    -36.920130832528798
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 25,
+                "STOPID": 126,
+                "STOPCODE": 126,
+                "STOPNAME": "Sturges Rd Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.87346889,
+                "STOPLON": 174.62082417,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.620824167032993,
+                    -36.873468888344902
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 26,
+                "STOPID": 120,
+                "STOPCODE": 120,
+                "STOPNAME": "Mt Albert Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.88477528,
+                "STOPLON": 174.71408944000001,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.714089444201988,
+                    -36.884775276564703
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 27,
+                "STOPID": 119,
+                "STOPCODE": 119,
+                "STOPNAME": "Baldwin Ave Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.87767778,
+                "STOPLON": 174.72045361,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.720453611374012,
+                    -36.877677776914403
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 28,
+                "STOPID": 124,
+                "STOPCODE": 124,
+                "STOPNAME": "Glen Eden Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.91027417,
+                "STOPLON": 174.65317,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.653169999632013,
+                    -36.910274165740297
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 29,
+                "STOPID": 107,
+                "STOPCODE": 107,
+                "STOPNAME": "Te Mahia Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -37.03118167,
+                "STOPLON": 174.906095,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.906094999938006,
+                    -37.031181666052397
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 30,
+                "STOPID": 123,
+                "STOPCODE": 123,
+                "STOPNAME": "Fruitvale Rd Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.91066972,
+                "STOPLON": 174.66706694000001,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.667066944676009,
+                    -36.9106697210673
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 31,
+                "STOPID": 104,
+                "STOPCODE": 104,
+                "STOPNAME": "Morningside Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.874985,
+                "STOPLON": 174.73521,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.735209999938007,
+                    -36.8749849986919
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 32,
+                "STOPID": 101,
+                "STOPCODE": 101,
+                "STOPNAME": "Otahuhu Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.94669472,
+                "STOPLON": 174.83321,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.833209999794008,
+                    -36.946694721733003
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 33,
+                "STOPID": 115,
+                "STOPCODE": 115,
+                "STOPNAME": "Newmarket Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.86972028,
+                "STOPLON": 174.77883361,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.778833611474994,
+                    -36.8697202765402
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 34,
+                "STOPID": 117,
+                "STOPCODE": 117,
+                "STOPNAME": "Meadowbank Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.86631972,
+                "STOPLON": 174.82075,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.820749999876,
+                    -36.866319721418797
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 35,
+                "STOPID": 106,
+                "STOPCODE": 106,
+                "STOPNAME": "Takaanini Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -37.04112417,
+                "STOPLON": 174.91945,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.919450000105996,
+                    -37.041124166176999
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 36,
+                "STOPID": 121,
+                "STOPCODE": 121,
+                "STOPNAME": "Sunnyvale Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.89686778,
+                "STOPLON": 174.63200889000001,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.632008888674989,
+                    -36.896867776978198
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 37,
+                "STOPID": 140,
+                "STOPCODE": 140,
+                "STOPNAME": "Parnell Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.85472833,
+                "STOPLON": 174.77739917,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.777399166891996,
+                    -36.854728332036601
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 38,
+                "STOPID": 605,
+                "STOPCODE": 605,
+                "STOPNAME": "Onehunga Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.92539389,
+                "STOPLON": 174.7868,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.786799999506997,
+                    -36.925393887991603
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 39,
+                "STOPID": 130,
+                "STOPCODE": 130,
+                "STOPNAME": "Panmure Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.8977775,
+                "STOPLON": 174.84967,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.849670000125002,
+                    -36.897777498937899
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 40,
+                "STOPID": 114,
+                "STOPCODE": 114,
+                "STOPNAME": "Remuera Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.88138333,
+                "STOPLON": 174.78542028000001,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.785420278135007,
+                    -36.881383332610497
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 41,
+                "STOPID": 135,
+                "STOPCODE": 135,
+                "STOPNAME": "The Strand Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.84853556,
+                "STOPLON": 174.77934083,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.779340832996013,
+                    -36.848535555028199
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 42,
+                "STOPID": 102,
+                "STOPCODE": 102,
+                "STOPNAME": "Penrose Train Station",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -36.91009167,
+                "STOPLON": 174.8157,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    174.815699999747011,
+                    -36.9100916657139
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "OBJECTID": 43,
+                "STOPID": 143,
+                "STOPCODE": 143,
+                "STOPNAME": "Huntly",
+                "STOPDESC": null,
+                "LOCATIONTYPE": "Stop",
+                "STOPLAT": -37.55956778,
+                "STOPLON": 175.15949833,
+                "PARENTSTATION": null,
+                "MODE": "Train"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    175.159498333268004,
+                    -37.559567777057097
+                ]
+            }
+        }
+    ]
+}
