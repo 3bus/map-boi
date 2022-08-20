@@ -18,7 +18,7 @@ import busStops from "../geojson/BusStops.json";
 import trainRoutes from "../geojson/TrainRoutes.json";
 import trainStops from "../geojson/TrainStops.json";
 import adt from "../geojson/TrafficService.json";
-import {scaleLinear, scaleThreshold} from 'd3-scale';
+import { scaleLinear, scaleThreshold } from "d3-scale";
 
 import tripData from "../public/trips.json";
 
@@ -77,20 +77,28 @@ export const COLOR_SCALE = scaleThreshold()
     [253, 174, 97],
     [244, 109, 67],
     [215, 48, 39],
-    [168, 0, 0]
+    [168, 0, 0],
   ]);
+
+const goodTripColor = [40, 255, 50, 100];
+const badTripColor = [255, 40, 40, 100];
+const goodAnimationSpeed = 1;
+const badAnimationSpeed = 0.2;
+const goodTrailLength = 100;
+const badTrailLength = 25;
+
+let isGoodMode = false;
+
+document.addEventListener("keydown", (e) => {
+  console.log({ key: e.key });
+  if (e.key === " ") {
+    isGoodMode = !isGoodMode;
+  }
+});
 
 const MAP_STYLE =
   "https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json";
 
-const landCover = [
-  [
-    [-36.84, 174.76],
-    [-36.74, 174.76],
-    [-36.74, 174.86],
-    [-36.84, 174.86],
-  ],
-];
 const MAPBOX_ACCESS_TOKEN =
   "pk.eyJ1IjoiaWxpYS10dXJub3V0IiwiYSI6ImNsNzBja29qYjBkMW0zdnFwb2d0aWR4dmgifQ.SqJqgMKQH_BOQckDVI6JyQ";
 function App({
@@ -99,23 +107,22 @@ function App({
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
   loopLength = 500, // unit corresponds to the timestamp in source data
-  animationSpeed = 0.2,
 }) {
-  const getLineColor = point => {
+  const animationSpeed = isGoodMode ? goodAnimationSpeed : badAnimationSpeed;
+  const getLineColor = (point) => {
     let adtCount = point.properties.adt;
-    if (adtCount >= 5000){
-      return COLOR_SCALE(adtCount)
+    if (adtCount >= 5000) {
+      return COLOR_SCALE(adtCount);
     } else {
-      return [0,0,0,0]
+      return [0, 0, 0, 0];
     }
   };
 
   const [time, setTime] = useState(0);
   const [animation] = useState<{ id: number | undefined }>({ id: undefined });
-  const loopPercentage = time / loopLength;
 
   const animate = () => {
-    setTime((t) => (t + animationSpeed + Math.pow( 0.8 * loopPercentage, 1.2)) % loopLength);
+    setTime((t) => (t + animationSpeed) % loopLength);
     animation.id = window.requestAnimationFrame(animate);
   };
 
@@ -178,16 +185,10 @@ function App({
           (a: any, idx: number, arr: []) =>
             (loopLength / arr.length) * ((idx + arr.length / 2) % arr.length),
         ),
-      getColor: [
-        Math.round((1 - loopPercentage) * 225),
-        Math.round(loopPercentage * 255),
-        40,
-        100,
-      ],
-
+      getColor: isGoodMode ? goodTripColor : badTripColor,
       getWidth: 10,
       fadeTrail: true,
-      trailLength: 50 + loopPercentage * 50,
+      trailLength: isGoodMode ? goodTrailLength : badTrailLength,
       currentTime: time,
     }),
     new GeoJsonLayer({
@@ -195,8 +196,8 @@ function App({
       data: adt as any,
       getPolygon: (d) => d.geometry.coordinates,
       getLineWidth: 45,
-      getLineColor
-    })
+      getLineColor,
+    }),
   ];
 
   const mapboxBuildingLayer = {
