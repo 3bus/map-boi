@@ -17,6 +17,8 @@ import busRoutes from "../geojson/BusRoutes.json";
 import busStops from "../geojson/BusStops.json";
 import trainRoutes from "../geojson/TrainRoutes.json";
 import trainStops from "../geojson/TrainStops.json";
+import adt from "../geojson/TrafficService.json";
+import {scaleLinear, scaleThreshold} from 'd3-scale';
 
 import tripData from "../public/trips.json";
 
@@ -63,6 +65,21 @@ const INITIAL_VIEW_STATE = {
   bearing: 0,
 };
 
+export const COLOR_SCALE = scaleThreshold()
+  .domain([2400, 4000, 8800, 11200, 15000, 23200, 30000, 45400, 85000, 109400])
+  .range([
+    [26, 152, 80],
+    [102, 189, 99],
+    [166, 217, 106],
+    [217, 239, 139],
+    [255, 255, 191],
+    [254, 224, 139],
+    [253, 174, 97],
+    [244, 109, 67],
+    [215, 48, 39],
+    [168, 0, 0]
+  ]);
+
 const MAP_STYLE =
   "https://basemaps.cartocdn.com/gl/dark-matter-nolabels-gl-style/style.json";
 
@@ -84,6 +101,15 @@ function App({
   loopLength = 500, // unit corresponds to the timestamp in source data
   animationSpeed = 0.2,
 }) {
+  const getLineColor = point => {
+    let adtCount = point.properties.adt;
+    if (adtCount >= 5000){
+      return COLOR_SCALE(adtCount)
+    } else {
+      return [0,0,0,0]
+    }
+  };
+
   const [time, setTime] = useState(0);
   const [animation] = useState<{ id: number | undefined }>({ id: undefined });
   const loopPercentage = time / loopLength;
@@ -164,6 +190,13 @@ function App({
       trailLength: 50 + loopPercentage * 50,
       currentTime: time,
     }),
+    new GeoJsonLayer({
+      id: "averagedailytraffic",
+      data: adt as any,
+      getPolygon: (d) => d.geometry.coordinates,
+      getLineWidth: 45,
+      getLineColor
+    })
   ];
 
   const mapboxBuildingLayer = {
