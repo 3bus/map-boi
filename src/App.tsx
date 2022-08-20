@@ -65,20 +65,22 @@ const INITIAL_VIEW_STATE = {
   bearing: 0,
 };
 
+const opacity = 150;
+
 export const COLOR_SCALE = scaleThreshold()
   .domain([2400, 4000, 8800, 11200, 15000, 23200, 30000, 45400, 85000, 109400])
   .range([
-    [26, 152, 80],
-    [102, 189, 99],
-    [166, 217, 106],
-    [217, 239, 139],
-    [255, 255, 191],
-    [254, 224, 139],
-    [253, 174, 97],
-    [244, 109, 67],
-    [215, 48, 39],
-    [168, 0, 0],
-  ]);
+    [26, 152, 80, opacity],
+    [102, 189, 99, opacity],
+    [166, 217, 106, opacity],
+    [217, 239, 139, opacity],
+    [255, 255, 191, opacity],
+    [254, 224, 139, opacity],
+    [253, 174, 97, opacity],
+    [244, 109, 67, opacity],
+    [215, 48, 39, opacity],
+    [168, 0, 0, opacity]
+  ] as Iterable<number>);
 
 const goodTripColor = [40, 255, 50, 100];
 const badTripColor = [255, 40, 40, 100];
@@ -108,13 +110,13 @@ function App({
   theme = DEFAULT_THEME,
   loopLength = 500, // unit corresponds to the timestamp in source data
 }) {
-  const animationSpeed = isGoodMode ? goodAnimationSpeed : badAnimationSpeed;
-  const getLineColor = (point) => {
+    const animationSpeed = isGoodMode ? goodAnimationSpeed : badAnimationSpeed;
+  const getLineColor = (point: any): [number, number , number, number] => {
     let adtCount = point.properties.adt;
     if (adtCount >= 5000) {
-      return COLOR_SCALE(adtCount);
+      return COLOR_SCALE(adtCount) as unknown as [number, number, number, number]
     } else {
-      return [0, 0, 0, 0];
+      return [0, 0, 0, 0]
     }
   };
 
@@ -154,7 +156,7 @@ function App({
     new GeoJsonLayer({
       id: "trainroutes",
       data: trainRoutes as any,
-      getPolygon: (d) => d.geometry.coordinates,
+      getPolygon: (d: any) => d.geometry.coordinates,
       getLineWidth: 10,
       getLineColor: [34, 246, 225],
       getFillColor: (d) => [34, 246, 225],
@@ -162,24 +164,24 @@ function App({
     new GeoJsonLayer({
       id: "trainstops",
       data: trainStops as any,
-      getPolygon: (d) => d.geometry.coordinates,
+      getPolygon: (d: any) => d.geometry.coordinates,
       getLineWidth: 50,
-      getLineColor: [45, 214, 90],
-      getFillColor: (d) => [45, 214, 90],
+      getLineColor: [34, 246, 225],
+      getFillColor: (d) => [34, 246, 225],
     }),
-    new GeoJsonLayer({
-      id: "busstops",
-      data: busStops as any,
-      getPolygon: (d) => d.geometry.coordinates,
-      getLineWidth: 30,
-      getLineColor: [199, 86, 120],
-      getFillColor: (d) => [199, 86, 120],
-    }),
+    // new GeoJsonLayer({
+    //   id: "busstops",
+    //   data: busStops as any,
+    //   getPolygon: (d) => d.geometry.coordinates,
+    //   getLineWidth: 30,
+    //   getLineColor: [199, 86, 120],
+    //   getFillColor: (d) => [199, 86, 120],
+    // }),
 
     new TripsLayer({
       id: "trips",
       data: busRouteMemo,
-      getPath: (d) => d.geometry.coordinates,
+      getPath: (d: any) => d.geometry.coordinates,
       getTimestamps: (d) =>
         d.geometry.coordinates.map(
           (a: any, idx: number, arr: []) =>
@@ -194,7 +196,7 @@ function App({
     new GeoJsonLayer({
       id: "averagedailytraffic",
       data: adt as any,
-      getPolygon: (d) => d.geometry.coordinates,
+      getPolygon: (d: any) => d.geometry.coordinates,
       getLineWidth: 45,
       getLineColor,
     }),
@@ -225,7 +227,7 @@ function App({
         mapStyle={mapStyle}
         // preventStyleDiffing={true}
         onLoad={(e) => {
-          e.target.addLayer(mapboxBuildingLayer);
+          e.target.addLayer(mapboxBuildingLayer as unknown as any);
         }}
       />
     </DeckGL>
