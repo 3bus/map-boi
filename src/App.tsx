@@ -189,7 +189,7 @@ function App({
           (a: any, idx: number, arr: []) =>
             (loopLength / arr.length) * ((idx + arr.length / 2) % arr.length),
         ),
-      getColor: isGoodMode ? (goodTripColor as ColorNumberThing) : (badTripColor as ColorNumberThing),
+      getColor: (isGoodMode ? goodTripColor : badTripColor) as ColorNumberThing,
       getWidth: 10,
       fadeTrail: true,
       trailLength: isGoodMode ? goodTrailLength : badTrailLength,
