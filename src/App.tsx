@@ -82,13 +82,14 @@ function App({
   mapStyle = MAP_STYLE,
   theme = DEFAULT_THEME,
   loopLength = 500, // unit corresponds to the timestamp in source data
-  animationSpeed = 0.5,
+  animationSpeed = 0.2,
 }) {
   const [time, setTime] = useState(0);
   const [animation] = useState<{ id: number | undefined }>({ id: undefined });
+  const loopPercentage = time / loopLength;
 
   const animate = () => {
-    setTime((t) => (t + animationSpeed) % loopLength);
+    setTime((t) => (t + animationSpeed + Math.pow( 0.8 * loopPercentage, 1.2)) % loopLength);
     animation.id = window.requestAnimationFrame(animate);
   };
 
@@ -100,7 +101,6 @@ function App({
   }, [animation]);
 
   const busRouteMemo = useMemo(() => {
-    console.log("Do the hard math!");
     return (busRoutes as any).features.reduce((acc: any, feature: any) => {
       return [
         ...acc,
@@ -118,14 +118,6 @@ function App({
   }, []);
 
   const layers = [
-    new GeoJsonLayer({
-      id: "busroutes",
-      data: busRoutes as any,
-      getPolygon: (d) => d.geometry.coordinates,
-      getLineWidth: 5,
-      getLineColor: [255, 140, 0],
-      getFillColor: (d) => [255, 140, 0],
-    }),
     new GeoJsonLayer({
       id: "trainroutes",
       data: trainRoutes as any,
@@ -160,11 +152,16 @@ function App({
           (a: any, idx: number, arr: []) =>
             (loopLength / arr.length) * ((idx + arr.length / 2) % arr.length),
         ),
-      getColor: [255, 64, 64],
-      opacity: 0.1,
+      getColor: [
+        Math.round((1 - loopPercentage) * 225),
+        Math.round(loopPercentage * 255),
+        40,
+        100,
+      ],
+
       getWidth: 10,
       fadeTrail: true,
-      trailLength: 200,
+      trailLength: 50 + loopPercentage * 50,
       currentTime: time,
     }),
   ];
