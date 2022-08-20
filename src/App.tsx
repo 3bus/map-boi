@@ -15,6 +15,8 @@ import { TripsLayer } from "@deck.gl/geo-layers/typed";
 import "mapbox-gl/src/css/mapbox-gl.css";
 import busRoutes from "../geojson/BusRoutes.json";
 
+import tripData from "../public/trips.json";
+
 // Source data CSV
 const DATA_URL = {
   BUILDINGS:
@@ -72,8 +74,6 @@ const landCover = [
 const MAPBOX_ACCESS_TOKEN =
   "pk.eyJ1IjoiaWxpYS10dXJub3V0IiwiYSI6ImNsNzBja29qYjBkMW0zdnFwb2d0aWR4dmgifQ.SqJqgMKQH_BOQckDVI6JyQ";
 function App({
-  buildings = DATA_URL.BUILDINGS,
-  trips = DATA_URL.TRIPS,
   trailLength = 180,
   initialViewState = INITIAL_VIEW_STATE,
   mapStyle = MAP_STYLE,
