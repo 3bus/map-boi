@@ -67,7 +67,7 @@ const INITIAL_VIEW_STATE = {
 
 const opacity = 150;
 
-export const COLOR_SCALE = scaleThreshold()
+export const GOOD_COLOR_SCALE = scaleThreshold()
   .domain([2400, 4000, 8800, 11200, 15000, 23200, 30000, 45400, 85000, 109400])
   .range([
     [26, 152, 80, opacity],
@@ -77,8 +77,23 @@ export const COLOR_SCALE = scaleThreshold()
     [255, 255, 191, opacity],
     [254, 224, 139, opacity],
     [253, 174, 97, opacity],
+    [255, 125, 84, opacity],
     [244, 109, 67, opacity],
+    [242, 58, 48, opacity]
+  ] as Iterable<number>);
+
+export const BAD_COLOR_SCALE = scaleThreshold()
+  .domain([2400, 4000, 8800, 11200, 15000, 23200, 30000, 45400, 85000, 109400])
+  .range([
+    [254, 224, 139, opacity],
+    [237, 203, 104, opacity],
+    [227, 168, 111, opacity],
+    [253, 174, 97, opacity],
+    [255, 125, 84, opacity],
+    [244, 109, 67, opacity],
+    [242, 58, 48, opacity],
     [215, 48, 39, opacity],
+    [189, 4, 4, opacity],
     [168, 0, 0, opacity]
   ] as Iterable<number>);
 
@@ -112,11 +127,11 @@ function App({
   theme = DEFAULT_THEME,
   loopLength = 500, // unit corresponds to the timestamp in source data
 }) {
-    const animationSpeed = isGoodMode ? goodAnimationSpeed : badAnimationSpeed;
-  const getLineColor = (point: any): [number, number , number, number] => {
+  const animationSpeed = isGoodMode ? goodAnimationSpeed : badAnimationSpeed;
+  const getLineColor = (point: any): [number, number, number, number] => {
     let adtCount = point.properties.adt;
     if (adtCount >= 5000) {
-      return COLOR_SCALE(adtCount) as unknown as [number, number, number, number]
+      return (isGoodMode ? GOOD_COLOR_SCALE(adtCount) : BAD_COLOR_SCALE(adtCount)) as unknown as [number, number, number, number]
     } else {
       return [0, 0, 0, 0]
     }
@@ -196,10 +211,10 @@ function App({
       currentTime: time,
     }),
     new GeoJsonLayer({
-      id: "averagedailytraffic",
+      id: `averagedailytraffic ${isGoodMode}`,
       data: adt as any,
       getPolygon: (d: any) => d.geometry.coordinates,
-      getLineWidth: 45,
+      getLineWidth: 25,
       getLineColor,
     }),
   ];
