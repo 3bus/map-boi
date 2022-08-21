@@ -1,0 +1,22 @@
+{
+  "short_name": "Map visualisation",
+  "name": "Map visualisation: Get Bussin",
+  "icons": [
+    {
+      "src": "/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#1E293B",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#1E293B",
+  "description": "Map visualisation that shows the ridership before and after the introduction of the Bustle loyalty point system"
+}
